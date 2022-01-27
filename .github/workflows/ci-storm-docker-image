@@ -17,7 +17,7 @@ jobs:
     - name: Build & Push
       uses: smarsh/storm-docker@latest
       env:
-        DOCKER_USERNAME: smarshdevopsbot
+        DOCKER_USERNAME: abcd
         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-        IMAGE_TO_BUILD: delivery-tools
+        IMAGE_TO_BUILD: storm
         PIVNET_TOKEN: ${{ secrets.PIVNET_TOKEN }}
