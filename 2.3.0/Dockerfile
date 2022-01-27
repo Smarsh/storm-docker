@@ -21,7 +21,7 @@ RUN set -eux; \
         dirmngr \
         gosu \
         gnupg \
-        python \
+        python3 \
         procps \
         netcat \
         curl \
@@ -70,9 +70,11 @@ RUN set -eux; \
     gpg --batch --verify "$DISTRO_NAME.tar.gz.asc" "$DISTRO_NAME.tar.gz"; \
     tar -xzf "$DISTRO_NAME.tar.gz"; \
     rm -rf "$GNUPGHOME" "$DISTRO_NAME.tar.gz" "$DISTRO_NAME.tar.gz.asc"; \
-    chown -R storm:storm "$DISTRO_NAME"
+    mv "${DISTRO_NAME}" apache-storm; \
+    DISTRO_NAME=apache-storm; \
+    chown -R storm:storm "$DISTRO_NAME";
 
-WORKDIR $DISTRO_NAME
+WORKDIR "${DISTRO_NAME}"
 
 ENV PATH $PATH:/$DISTRO_NAME/bin:/usr/local/bin
 
