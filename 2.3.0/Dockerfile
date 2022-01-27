@@ -71,10 +71,9 @@ RUN set -eux; \
     tar -xzf "$DISTRO_NAME.tar.gz"; \
     rm -rf "$GNUPGHOME" "$DISTRO_NAME.tar.gz" "$DISTRO_NAME.tar.gz.asc"; \
     mv "${DISTRO_NAME}" apache-storm; \
-    DISTRO_NAME=apache-storm; \
-    chown -R storm:storm "$DISTRO_NAME";
+    chown -R storm:storm apache-storm;
 
-WORKDIR "${DISTRO_NAME}"
+WORKDIR "apache-storm"
 
 ENV PATH $PATH:/$DISTRO_NAME/bin:/usr/local/bin
 
